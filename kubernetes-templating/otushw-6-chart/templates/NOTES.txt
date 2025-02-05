@@ -1,0 +1,4 @@
+Your application has been deployed!
+
+You can access your application at:
+http://{{ .Values.ingress.host }}
