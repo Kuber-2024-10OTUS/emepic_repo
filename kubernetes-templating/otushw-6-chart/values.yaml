@@ -1,0 +1,41 @@
+namespace: homework
+
+configMap:
+  name: cmhw4
+  data:
+    key1: value1
+    key2: value2
+    key3: value3
+
+deployment:
+  name: controllers-pod
+  replicas: 3
+  image:
+    repository: nginx
+    tag: stable
+  initContainer:
+    image: busybox
+    tag: stable
+  service:
+    port: 8000
+    targetPort: 80
+
+ingress:
+  name: webapp-ingress
+  host: homework.otus
+  paths:
+    - path: /homepage
+      pathType: Exact
+    - path: /
+      pathType: Prefix
+
+persistentVolumeClaim:
+  name: pvchw4
+  storageClassName: otushw4
+  storage: 1Gi
+
+storageClass:
+  name: otushw4
+  provisioner: k8s.io/minikube-hostpath
+  reclaimPolicy: Retain
+  volumeBindingMode: Immediate
