@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: mysql-operator
+rules:
+# Права для работы с CRD (MySQL)
+- apiGroups: ["otus.homework"]
+  resources: ["mysqls"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Права для работы с Pods, Deployments, Services, PVC, PV
+- apiGroups: [""]
+  resources: ["pods", "services", "persistentvolumeclaims", "persistentvolumes"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+- apiGroups: ["apps"]
+  resources: ["deployments"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
