@@ -1,0 +1,10 @@
+grafana:
+  service:
+    type: LoadBalancer
+  adminUser: admin
+  adminPassword: password
+prometheus:
+  service:
+    type: LoadBalancer
+    port: 9090
+    targetPort: 9090
