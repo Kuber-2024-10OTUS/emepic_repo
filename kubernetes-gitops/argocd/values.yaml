@@ -1,0 +1,35 @@
+global:
+  nodeSelector:
+    node-role: infra
+  tolerations:
+    - key: "node-role"
+      operator: "Equal"
+      value: "infra"
+      effect: "NoSchedule"
+
+controller:
+  nodeSelector:
+    node-role: infra
+  tolerations:
+    - key: "node-role"
+      operator: "Equal"
+      value: "infra"
+      effect: "NoSchedule"
+
+server:
+  nodeSelector:
+    node-role: infra
+  tolerations:
+    - key: "node-role"
+      operator: "Equal"
+      value: "infra"
+      effect: "NoSchedule"
+
+repoServer:
+  nodeSelector:
+    node-role: infra
+  tolerations:
+    - key: "node-role"
+      operator: "Equal"
+      value: "infra"
+      effect: "NoSchedule"

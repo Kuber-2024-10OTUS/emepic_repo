@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubernetes-templating
+  namespace: argocd
+spec:
+  project: otus
+  source:
+    repoURL: 'https://github.com/Kuber-2024-10OTUS/emepic_repo.git'
+    targetRevision: HEAD
+    path: kubernetes-templating/otushw-6-chart
+    helm:
+      valueFiles:
+        - values.yaml
+      parameters:
+        - name: replicaCount
+          value: "3"
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: homeworkhelm
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

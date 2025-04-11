@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: otus
+  namespace: argocd
+spec:
+  description: Otus GitOps project
+  sourceRepos:
+    - 'https://github.com/Kuber-2024-02OTUS/emepic_repo.git'
+    - 'https://github.com/Kuber-2024-10OTUS/emepic_repo.git'
+  destinations:
+    - namespace: '*'
+      server: 'https://kubernetes.default.svc'
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
